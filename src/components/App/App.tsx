@@ -30,7 +30,7 @@ function App() {
     document.title = `${currency.description} - React Currency Converter`;
 
     fetch(
-      `http://api.exchangerate.host/convert?from=EUR&to=${currency.code}&amount=1&access_key=f2fd6ae06abf0999da92bf08591832c8`
+      `https://api.exchangerate.host/convert?from=EUR&to=${currency.code}&amount=1&access_key=f2fd6ae06abf0999da92bf08591832c8`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -68,7 +68,10 @@ function App() {
       {/* Je fournis la liste des currencies récupérer depuis mon fichier data/currencies.js */}
       {/* Je passe la fonction setCurrency qui sera exécuter ... au click sur la devise */}
       <Currencies currencies={currenciesData} onClickCurrency={setCurrency} />
-      <ResultConversion value={rate} currencyName={currency.description} />
+      <ResultConversion
+        value={currency.rate}
+        currencyName={currency.description}
+      />
 
       {/* <Footer likesCount={likesCount} setLikesCount={setLikesCount} /> */}
     </div>
