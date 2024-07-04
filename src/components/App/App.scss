@@ -1,0 +1,13 @@
+@use '../../styles/variables' as v;
+
+.app {
+  max-width: 25rem;
+  margin: auto;
+
+  height: calc(100vh - 2rem);
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  justify-content: center;
+}

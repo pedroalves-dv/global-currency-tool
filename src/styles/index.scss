@@ -1,0 +1,12 @@
+@use 'reset';
+@use 'fonts';
+@use 'variables' as v;
+
+body {
+  margin: 0;
+  background-color: v.$color-alt;
+  font-weight: 300;
+  color: v.$color-primary;
+  padding: 1rem;
+  font-family: v.$font;
+}
