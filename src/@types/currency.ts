@@ -1,5 +1,6 @@
 export type Currency = {
-  description: string;
   code: string;
+  name: string;
+  description: string;
   rate: number;
 };

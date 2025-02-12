@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
-import App from './components/App/App';
 import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter';
 import SpendingPower from './components/SpendingPower/SpendingPower';
 
@@ -16,7 +15,6 @@ const Main: React.FC = () => {
         <p className="title">Global Currency Tool v0.1.2</p>
       </div>
       <div className="main-container">
-        {/* <App /> */}
         <div className="currency-container">
           <CurrencyConverter setToCurrency={setToCurrency} />
         </div>

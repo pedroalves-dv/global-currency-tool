@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './CurrencyConverter.scss';
-import { Currency } from '../../@types/currency';
+
+interface Currency {
+  code: string;
+  name: string;
+}
 
 interface CurrencyConverterProps {
   setToCurrency: (currency: string) => void;
