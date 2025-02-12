@@ -5,7 +5,7 @@ import ResultConversion from '../ResultConversion/ResultConversion';
 import './App.scss';
 
 import currenciesData from '../../data/currencies';
-import Footer from '../Footer/Footer';
+
 import { Currency } from '../../@types/currency';
 
 function App() {
