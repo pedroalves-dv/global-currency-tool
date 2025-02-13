@@ -1,8 +1,12 @@
-# Euro Converter
+# Global Currency Tool
 
 ## Overview
 
 Euro Converter is a web application that provides real-time updates on the conversion rate of different world currencies. It also includes a spending power feature that allows users to see how much they can buy in different countries with a given amount of money.
+
+## Live Demo
+
+→ [Global Currency Tool](https://pedroalves-dv.github.io/global-currency-tool/)
 
 ## Features
 
