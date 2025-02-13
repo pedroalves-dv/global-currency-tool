@@ -15,7 +15,9 @@ body,
 }
 
 body {
-  background-color: var(--color-dark);
+  // background-color: #1d1d1d;
+  background-color: var(--color-strongdark);
+  // background-color: var(--color-dark);
   font-weight: 300;
   color: var(--color-primary);
   font-family: 'Noto Sans', serif;
@@ -23,6 +25,11 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
+}
+
+body.dark-mode {
+  background-color: var(--color-midlight);
+  color: var(--color-dark);
 }
 
 .dark-mode {
