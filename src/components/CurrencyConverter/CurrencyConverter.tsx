@@ -37,13 +37,13 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
       });
   }, [fromCurrency, toCurrency]);
 
-  const convert = () => {
-    fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setExchangeRate(data.rates[toCurrency]);
-      });
-  };
+  // const convert = () => {
+  //   fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setExchangeRate(data.rates[toCurrency]);
+  //     });
+  // };
 
   const swapCurrencies = () => {
     setFromCurrency(toCurrency);

@@ -10,17 +10,17 @@ Euro Converter is a web application that provides real-time updates on the conve
 
 ## Features
 
-- Real-time currency conversion rates
-- Spending power calculation based on cost of living indices
-- Dark mode toggle for better user experience
-- Responsive design for mobile and desktop devices
+- Real-time currency conversion rates 🌎
+- Spending power calculation based on cost of living indices 💰
+- Dark mode toggle for better user experience 🌙
+- Responsive design for mobile and desktop devices 📱💻
 
 ## Technologies Used
 
-- React
-- TypeScript
-- SCSS
-- Vite
+- React ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
+- TypeScript ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
+- SCSS ![SCSS](https://img.shields.io/badge/-SCSS-CC6699?logo=Sass&logoColor=white)
+- Vite ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=Vite&logoColor=white)
 - Open Exchange Rates API
 
 ## Installation
@@ -40,7 +40,7 @@ To run this project locally, follow these steps:
    cd euro-converter
 ```
 
-3. Install the dependencies:
+3. Install dependecies:
 
 ```sh
    npm install
