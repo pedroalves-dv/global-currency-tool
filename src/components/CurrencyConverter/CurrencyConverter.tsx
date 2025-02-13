@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CurrencyConverter.scss';
 
 interface Currency {
@@ -12,10 +12,12 @@ interface CurrencyConverterProps {
 
 function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
   const [amount, setAmount] = useState<number>(1);
+  const [displayAmount, setDisplayAmount] = useState<string>('1');
   const [fromCurrency, setFromCurrency] = useState<string>('EUR');
   const [toCurrency, setToCurrencyState] = useState<string>('USD');
   const [exchangeRate, setExchangeRate] = useState<number>(1);
   const [currencies, setCurrencies] = useState<Currency[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch('https://openexchangerates.org/api/currencies.json')
@@ -55,13 +57,46 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
     setToCurrency(newToCurrency);
   };
 
+  // formating of the numbers with spaces for readability
+  const formatNumber = (num: number) => {
+    return new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 3,
+    })
+      .format(num)
+      .replace(/,/g, ' ');
+  };
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\s/g, '');
+    if (value.length > 12) {
+      value = value.slice(0, 12);
+    }
+    const numericValue = parseFloat(value);
+    if (!Number.isNaN(numericValue)) {
+      setAmount(numericValue);
+      setDisplayAmount(formatNumber(numericValue));
+    } else {
+      setDisplayAmount(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      const cursorPosition = inputRef.current.selectionStart;
+      setDisplayAmount(formatNumber(amount));
+      inputRef.current.setSelectionRange(cursorPosition, cursorPosition);
+    }
+  }, [amount]);
+
   return (
     <div className="currency-converter">
       <div className="converter-form">
         <input
-          type="number"
-          value={amount}
-          onChange={(e) => setAmount(parseFloat(e.target.value))}
+          type="text"
+          value={displayAmount}
+          onChange={handleAmountChange}
+          ref={inputRef}
         />
         <select
           value={fromCurrency}
@@ -81,9 +116,9 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
           >
             ⇄
           </button>
-          <button type="button" className="convert-button" onClick={convert}>
+          {/* <button type="button" className="convert-button" onClick={convert}>
             Convert
-          </button>
+          </button> */}
         </div>
         <select value={toCurrency} onChange={handleToCurrencyChange}>
           {currencies.map((currency) => (
@@ -94,7 +129,7 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
         </select>
 
         <div className="result">
-          {(amount * exchangeRate).toFixed(3)} {toCurrency}
+          {formatNumber(amount * exchangeRate)} {toCurrency}
         </div>
       </div>
     </div>
