@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom/client';
 
 import CurrencyConverter from './components/CurrencyConverter/CurrencyConverter';
 import SpendingPower from './components/SpendingPower/SpendingPower';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 import './styles/index.scss';
 
-const Main: React.FC = () => {
+function Main() {
   const [toCurrency, setToCurrency] = useState<string>('USD');
 
   return (
     <div className="app">
-      <div className="header">
-        <p className="title">Global Currency Tool v0.1.2</p>
-      </div>
+      <Header />
       <div className="main-container">
         <div className="currency-container">
           <CurrencyConverter setToCurrency={setToCurrency} />
@@ -22,9 +22,10 @@ const Main: React.FC = () => {
           <SpendingPower currency={toCurrency} />
         </div>
       </div>
+      <Footer />
     </div>
   );
-};
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

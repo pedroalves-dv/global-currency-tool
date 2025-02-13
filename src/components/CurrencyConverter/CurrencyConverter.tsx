@@ -10,9 +10,7 @@ interface CurrencyConverterProps {
   setToCurrency: (currency: string) => void;
 }
 
-const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
-  setToCurrency,
-}) => {
+function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
   const [amount, setAmount] = useState<number>(1);
   const [fromCurrency, setFromCurrency] = useState<string>('EUR');
   const [toCurrency, setToCurrencyState] = useState<string>('USD');
@@ -76,10 +74,17 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
           ))}
         </select>
         <div className="buttons">
-          <button onClick={swapCurrencies}>⇄</button>
-          <button onClick={convert}>Convert</button>
+          <button
+            type="button"
+            className="swap-button"
+            onClick={swapCurrencies}
+          >
+            ⇄
+          </button>
+          <button type="button" className="convert-button" onClick={convert}>
+            Convert
+          </button>
         </div>
-
         <select value={toCurrency} onChange={handleToCurrencyChange}>
           {currencies.map((currency) => (
             <option key={currency.code} value={currency.code}>
@@ -87,10 +92,13 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({
             </option>
           ))}
         </select>
+
+        <div className="result">
+          {(amount * exchangeRate).toFixed(3)} {toCurrency}
+        </div>
       </div>
-      <div className="result">{(amount * exchangeRate).toFixed(3)}</div>
     </div>
   );
-};
+}
 
 export default CurrencyConverter;

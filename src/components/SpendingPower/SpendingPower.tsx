@@ -25,6 +25,115 @@ const currencyToCountryMap: { [key: string]: string } = {
   CNY: 'China',
   BRL: 'Brazil',
   ZAR: 'South Africa',
+  CHF: 'Switzerland',
+  BSD: 'Bahamas',
+  ISK: 'Iceland',
+  SGD: 'Singapore',
+  BBD: 'Barbados',
+  NOK: 'Norway',
+  DKK: 'Denmark',
+  HKD: 'Hong Kong (China)',
+  AT: 'Austria',
+  NZD: 'New Zealand',
+  ILS: 'Israel',
+  LUX: 'Luxembourg',
+  DE: 'Germany',
+  KRW: 'South Korea',
+  SE: 'Sweden',
+  IT: 'Italy',
+  UAE: 'United Arab Emirates',
+  CY: 'Cyprus',
+  UY: 'Uruguay',
+  JM: 'Jamaica',
+  MT: 'Malta',
+  TT: 'Trinidad And Tobago',
+  CR: 'Costa Rica',
+  BH: 'Bahrain',
+  GR: 'Greece',
+  EE: 'Estonia',
+  QA: 'Qatar',
+  SI: 'Slovenia',
+  LV: 'Latvia',
+  ES: 'Spain',
+  LT: 'Lithuania',
+  SK: 'Slovakia',
+  CU: 'Cuba',
+  CZ: 'Czech Republic',
+  PA: 'Panama',
+  JP: 'Japan',
+  HR: 'Croatia',
+  SA: 'Saudi Arabia',
+  TW: 'Taiwan',
+  PT: 'Portugal',
+  OM: 'Oman',
+  KW: 'Kuwait',
+  AL: 'Albania',
+  LB: 'Lebanon',
+  HU: 'Hungary',
+  PS: 'Palestine',
+  JO: 'Jordan',
+  AM: 'Armenia',
+  PL: 'Poland',
+  MXN: 'Mexico',
+  SV: 'El Salvador',
+  ME: 'Montenegro',
+  CL: 'Chile',
+  GT: 'Guatemala',
+  VE: 'Venezuela',
+  BG: 'Bulgaria',
+  DO: 'Dominican Republic',
+  RS: 'Serbia',
+  RO: 'Romania',
+  TR: 'Turkey',
+  KH: 'Cambodia',
+  CM: 'Cameroon',
+  ZW: 'Zimbabwe',
+  MU: 'Mauritius',
+  FJ: 'Fiji',
+  BA: 'Bosnia And Herzegovina',
+  LK: 'Sri Lanka',
+  ZA: 'South Africa',
+  TH: 'Thailand',
+  MD: 'Moldova',
+  GE: 'Georgia',
+  MK: 'North Macedonia',
+  EC: 'Ecuador',
+  KZ: 'Kazakhstan',
+  CN: 'China',
+  NG: 'Nigeria',
+  AZ: 'Azerbaijan',
+  PH: 'Philippines',
+  RU: 'Russia',
+  GH: 'Ghana',
+  KE: 'Kenya',
+  BW: 'Botswana',
+  MY: 'Malaysia',
+  PE: 'Peru',
+  MA: 'Morocco',
+  XK: 'Kosovo (Disputed Territory)',
+  AR: 'Argentina',
+  IQ: 'Iraq',
+  UG: 'Uganda',
+  DZ: 'Algeria',
+  CO: 'Colombia',
+  VN: 'Vietnam',
+  TN: 'Tunisia',
+  BO: 'Bolivia',
+  KG: 'Kyrgyzstan',
+  ID: 'Indonesia',
+  IR: 'Iran',
+  UZ: 'Uzbekistan',
+  BY: 'Belarus',
+  UA: 'Ukraine',
+  NP: 'Nepal',
+  PY: 'Paraguay',
+  MG: 'Madagascar',
+  SY: 'Syria',
+  TZ: 'Tanzania',
+  BD: 'Bangladesh',
+  EG: 'Egypt',
+  LY: 'Libya',
+  PK: 'Pakistan',
 };
 
 const basePrices = {
@@ -33,8 +142,7 @@ const basePrices = {
   groceries: 100, // Weekly groceries
   rent: 1000, // Monthly rent
 };
-
-const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
+function SpendingPower({ currency }: SpendingPowerProps) {
   const [amount, setAmount] = useState<number>(100);
   const [purchases, setPurchases] = useState<Purchase[]>([]);
 
@@ -42,23 +150,13 @@ const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
   const country = currencyToCountryMap[currency] || 'United States';
 
   useEffect(() => {
-    console.log('Selected currency:', currency);
-    console.log('Mapped country:', country);
-    console.log('Full dataset:', costOfLivingData);
-
-    // Print all country names to check exact format
-    console.log('Available country names in JSON:');
-    costOfLivingData.forEach((item: any) => console.log(item.Country));
-
     // Find country data with a flexible match
     const countryData = costOfLivingData.find(
-      (item: any) => item.Country?.toLowerCase() === country.toLowerCase()
+      (item: { Country: string }) =>
+        item.Country?.toLowerCase() === country.toLowerCase()
     );
 
-    console.log('Country data found:', countryData);
-
     if (countryData) {
-      // Extract relevant prices
       const mealIndex = countryData['Restaurant Price Index'] || 10;
       const transportIndex = countryData['Cost of Living Index'] || 2;
       const groceriesIndex = countryData['Groceries Index'] || 1.5;
@@ -69,11 +167,6 @@ const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
       const transportPrice = (basePrices.transport * transportIndex) / 100;
       const groceriesPrice = (basePrices.groceries * groceriesIndex) / 100;
       const rentPrice = (basePrices.rent * rentIndex) / 100;
-
-      console.log('Meal Price:', mealPrice);
-      console.log('Transport Price:', transportPrice);
-      console.log('Groceries Price:', groceriesPrice);
-      console.log('Rent Price:', rentPrice);
 
       // Update purchase data
       const purchaseData: Purchase[] = [
@@ -122,7 +215,6 @@ const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
       <h1>Spending Power</h1>
       <div className="balance">
         <div className="quick-conversion">
-          {/* <h3>Balance</h3> */}
           <input
             type="range"
             min="1"
@@ -139,11 +231,7 @@ const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
         {purchases.length > 0 ? (
           purchases.map((purchase) => (
             <div key={purchase.category} className="purchase">
-              <img
-                src={purchase.icon}
-                alt={purchase.category}
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-              />
+              <img src={purchase.icon} alt={purchase.category} />
               <p>{purchase.description}</p>
             </div>
           ))
@@ -153,6 +241,6 @@ const SpendingPower: React.FC<SpendingPowerProps> = ({ currency }) => {
       </div>
     </div>
   );
-};
+}
 
 export default SpendingPower;
