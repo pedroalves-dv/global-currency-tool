@@ -8,6 +8,8 @@ Euro Converter is a web application that provides real-time updates on the conve
 
 → [Global Currency Tool](https://pedroalves-dv.github.io/global-currency-tool/)
 
+![Screenshot of Global Currency Tool](src/assets/global-currency-tool-ui.jpg)
+
 ## Features
 
 - Real-time currency conversion rates 🌎
