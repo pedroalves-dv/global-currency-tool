@@ -22,7 +22,14 @@ function Header() {
   return (
     <div className="header">
       <p className="title">
-        <span className="logo">🌐︎</span>
+        {/* <span className="logo">🌐︎</span> */}
+        <span className="logo">
+          <img
+            src="src/assets/logo.png"
+            style={{ width: '30px', height: '30px' }}
+            alt="logo"
+          />
+        </span>
       </p>
       <button
         type="button"
