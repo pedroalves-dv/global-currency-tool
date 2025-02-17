@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Header.scss';
+import logo from '../../assets/logo.png';
 
 function Header() {
   const [darkMode, setDarkMode] = useState(false);
@@ -25,8 +26,8 @@ function Header() {
         {/* <span className="logo">🌐︎</span> */}
         <span className="logo">
           <img
-            src="src/assets/logo.png"
-            style={{ width: '30px', height: '30px' }}
+            src={logo}
+            style={{ width: '26px', height: '26px' }}
             alt="logo"
           />
         </span>

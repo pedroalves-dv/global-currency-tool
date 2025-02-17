@@ -65,10 +65,30 @@ body.dark-mode {
   display: flex;
   justify-content: center;
   align-self: center;
-  width: 30%;
+  width: 27%;
 }
 
 // Tablet + Mobile Responsive
+
+@media (max-width: 1600px) {
+  .spending-power-container {
+    width: 40%;
+  }
+
+  .currency-container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .spending-power-container {
+    width: 50%;
+  }
+
+  .currency-container {
+    width: 40%;
+  }
+}
 
 @media (max-width: 900px) {
   .footer {
