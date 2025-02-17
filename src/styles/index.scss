@@ -14,14 +14,9 @@ body,
   height: 100%;
 }
 
-body,
-body.dark-mode,
-.header,
-.header.dark-mode,
-.footer,
-.footer.dark-mode,
-.dark-mode {
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+html,
+body {
+  background-color: var(--color-strongdark);
 }
 
 body {
@@ -43,6 +38,16 @@ body.dark-mode {
 .dark-mode {
   background-color: var(--color-light);
   color: var(--color-dark);
+}
+
+body,
+body.dark-mode,
+.header,
+.header.dark-mode,
+.footer,
+.footer.dark-mode,
+.dark-mode {
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
 .app {

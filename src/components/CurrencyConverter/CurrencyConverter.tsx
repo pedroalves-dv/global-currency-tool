@@ -18,6 +18,7 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
   const [exchangeRate, setExchangeRate] = useState<number>(1);
   const [currencies, setCurrencies] = useState<Currency[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [animatedString, setAnimatedString] = useState('');
 
   useEffect(() => {
     fetch('https://openexchangerates.org/api/currencies.json')
@@ -36,14 +37,6 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
         setExchangeRate(data.rates[toCurrency]);
       });
   }, [fromCurrency, toCurrency]);
-
-  // const convert = () => {
-  //   fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setExchangeRate(data.rates[toCurrency]);
-  //     });
-  // };
 
   const swapCurrencies = () => {
     setFromCurrency(toCurrency);
@@ -89,6 +82,36 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
     }
   }, [amount]);
 
+  useEffect(() => {
+    // Convert final numeric value to a string
+    const finalString = formatNumber(amount * exchangeRate);
+
+    // Clear any previous animation
+    let index = 0;
+    let partial = '';
+    setAnimatedString('');
+
+    let isMounted = true;
+
+    const intervalId = setInterval(() => {
+      if (!isMounted) return;
+      // Build up the final string one character at a time
+      partial += finalString[index];
+      setAnimatedString(partial);
+      index += 1;
+
+      // Stop once we've revealed the entire string
+      if (index >= finalString.length) {
+        clearInterval(intervalId);
+      }
+    }, 40); // Adjust for speed
+
+    return () => {
+      isMounted = false;
+      clearInterval(intervalId);
+    };
+  }, [amount, exchangeRate]);
+
   return (
     <div className="currency-converter">
       <div className="converter-form">
@@ -129,7 +152,7 @@ function CurrencyConverter({ setToCurrency }: CurrencyConverterProps) {
         </select>
 
         <div className="result">
-          {formatNumber(amount * exchangeRate)} {toCurrency}
+          {animatedString} {toCurrency}
         </div>
       </div>
     </div>
