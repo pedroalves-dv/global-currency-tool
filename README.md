@@ -2,7 +2,7 @@
 
 ## Overview
 
-Euro Converter is a web application that provides real-time updates on the conversion rate of different world currencies. It also includes a spending power feature that allows users to see how much they can buy in different countries with a given amount of money.
+A fully responsive currency conversion tool with a unique spending power feature. Designed for travelers and expats who want quick, real-time exchange rates and cost-of-living comparisons.
 
 ## Live Demo
 

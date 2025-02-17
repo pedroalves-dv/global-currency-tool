@@ -32,15 +32,16 @@
   position: relative;
   border-radius: 20px;
   cursor: pointer;
-  border: none;
+
   background: var(--color-light);
   transition: background 0.4s;
+  border: none;
 }
 
 .dark-mode-toggle:before {
   content: '';
   position: absolute;
-  top: 50.5%;
+  top: 50%;
   left: 4px;
   transform: translateY(-50%);
   width: 24px;
@@ -48,17 +49,31 @@
   border-radius: 20px;
   background: var(--color-primary);
   transition: left 0.4s, background 0.4s;
-  border: none;
 }
 /* style for the button when it is active */
 .dark-mode-toggle.active {
-  background: var(--color-dark);
+  width: 45px;
+  height: 20px;
+  position: relative;
   border-radius: 20px;
+  cursor: pointer;
   border: none;
+  background: var(--color-dark);
+  transition: background 0.4s;
 }
 .dark-mode-toggle.active:before {
   left: calc(100% - 28px);
   background: var(--color-primary);
   border-radius: 20px;
-  border: none;
+  // border: none;
+  content: '';
+  position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  width: 24px;
+  height: 15px;
+  border-radius: 20px;
+  background: var(--color-primary);
+  transition: left 0.4s, background 0.4s;
+  // border-bottom: 1px solid var(--color-dark);
 }
