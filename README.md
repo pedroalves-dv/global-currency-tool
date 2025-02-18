@@ -25,16 +25,22 @@ A fully responsive currency conversion tool with a unique spending power feature
 - Vite ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=Vite&logoColor=white)
 - Open Exchange Rates API
 
+## 🔧 Future Improvements
+
+- Add a **currency history graph**
+- Allow users to **save favorite currency pairs**
+- Enhance Spending power tool with localisation search, map, and suggestions base on user's budget
+
 ## Installation
 
 To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-   ```sh
-   git clone https://github.com/your-username/euro-converter.git
+```sh
+git clone https://github.com/your-username/euro-converter.git
 
-   ```
+```
 
 2. Navigate to the project directory:
 
@@ -60,6 +66,6 @@ To run this project locally, follow these steps:
  http://localhost:3000
 ```
 
-## Contributing
+## Contact
 
-Contributions are welcome! If you have any suggestions or improvements, please create a pull request or open an issue.
+For any inquiries, please contact me at [pedroalves.dv@gmail.com].
