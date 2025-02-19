@@ -104,7 +104,28 @@ body.dark-mode,
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .footer {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .main-container {
+    flex-direction: column;
+    width: 58%;
+    gap: 30px;
+  }
+  .app {
+    padding-top: 60px;
+  }
+  .currency-container {
+    width: 95%;
+  }
+  .spending-power-container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
   .footer {
     margin-top: 20px;
     font-size: 12px;
