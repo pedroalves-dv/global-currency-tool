@@ -126,6 +126,9 @@ body.dark-mode,
 }
 
 @media (max-width: 600px) {
+  .header {
+    padding: 0 25px;
+  }
   .footer {
     margin-top: 20px;
     font-size: 12px;
@@ -133,14 +136,16 @@ body.dark-mode,
   .main-container {
     flex-direction: column;
     width: 100%;
+    margin: 20px 0;
+    gap: 40px;
   }
   .app {
     padding-top: 60px;
   }
   .currency-container {
-    width: 95%;
+    width: 90%;
   }
   .spending-power-container {
-    width: 95%;
+    width: 90%;
   }
 }
